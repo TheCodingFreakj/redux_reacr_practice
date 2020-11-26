@@ -1,0 +1,42 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 3%;
+}
+
+.list-card {
+  background: purple;
+  width: 40%;
+  margin-top: 2%;
+  order: 2;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 3%;
+}
+.list-card h1 {
+  color: teal;
+}
+
+.list-card .btn {
+  color: wheat;
+  background-color: brown;
+  padding: 3%;
+}
+.list-card p {
+  color: aliceblue;
+}
+
+.toppings {
+  color: aliceblue;
+  /* display: inline-flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch; */
+}
+.toppings-list li {
+  list-style: none;
+}

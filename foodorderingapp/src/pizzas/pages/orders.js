@@ -1,7 +1,7 @@
 import React from "react";
 
 const MyOrders = () => {
-  return <>This is For Showing Pizza</>;
+  return <>This shows what orders you have made</>;
 };
 
 export default MyOrders;

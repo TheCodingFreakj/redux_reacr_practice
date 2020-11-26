@@ -6,11 +6,13 @@ import UserSignUp from "../src/forms/pages/signup";
 import UserProfile from "../src/users/pages/user";
 import ShowPizzas from "../src/pizzas/pages/pizzas";
 import MyOrders from "../src/pizzas/pages/orders";
+import MainNavigation from "./commons/components/Navigations/mainNavigation";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
+        <MainNavigation />
         <Switch>
           <Route path="/signup" component={UserSignUp} />
           <Route path="/login" component={UserLogin} />
