@@ -32,10 +32,6 @@
 
 .toppings {
   color: aliceblue;
-  /* display: inline-flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: stretch; */
 }
 .toppings-list li {
   list-style: none;
