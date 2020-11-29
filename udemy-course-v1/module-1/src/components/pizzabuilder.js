@@ -1,7 +1,6 @@
 import React from "react";
 
 const PizzaBuilder = (props) => {
-  console.log(props.selectToppings);
   const burgerbuilderCover = {
     margin: "40px",
     border: "5px solid red",
@@ -23,11 +22,11 @@ const PizzaBuilder = (props) => {
           <select
             name="chickenToppings"
             id="chickenToppings-select"
-            // onChange={props.selectToppings}
+            onChange={props.selectToppings}
           >
             <option value="">--Do you want chickenToppings--</option>
-            <option value="chickenToppings">Yes</option>
-            <option value="chickenToppings">No</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
           {props.chickenToppings ? (
             <div style={burgerbuilder}>Chicken Toppings Selected</div>

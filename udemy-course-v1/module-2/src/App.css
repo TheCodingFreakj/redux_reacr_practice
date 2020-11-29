@@ -1,0 +1,26 @@
+.container {
+  background-color: yellowgreen;
+  padding: 10%;
+  position: absolute;
+  left: 10%;
+  top: 40%;
+  display: flex;
+}
+
+.container button {
+  background-color: turquoise;
+  width: 100%;
+  color: wheat;
+  padding: 3%;
+}
+
+.inner-container {
+  margin-top: 10%;
+  background: tomato;
+  padding: 20%;
+  font-size: 30px;
+}
+
+.inner-flex-item {
+  margin: 2%;
+}
