@@ -153,3 +153,6 @@ export default App;
 //Running two useEffcets and analyziing how data flows
 //Rendering components conditionally
 //Analyziing how data flows through useEffects when compinents are passed
+
+//git log --graph --pretty=oneline --abbrev-commit
+//git push -u origin main
