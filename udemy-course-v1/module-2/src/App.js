@@ -1,83 +1,120 @@
 import React from "react";
 import "./App.css";
 import Form from "../src/components/forms";
+import OrderList from "../src/hoc/order";
+import ShowPizzaOrder from "../src/orders/pizzaorder";
+import ShowBurgerOrder from "../src/orders/burgerorders";
+import axios from "axios";
+
 const App = () => {
-  const [showPizza, setshowPizza] = React.useState(true);
-  const [showBurger, setshowBurger] = React.useState(true);
+  const [showPizza, setshowPizza] = React.useState(false);
+  const [showBurger, setshowBurger] = React.useState(false);
+
   const [order, setorder] = React.useState({
-    orderDetails: [
-      {
-        name: "Pais Lee",
-        orders: "6",
-        address: "kjjj",
-      },
-
-      {
-        name: "Ronalo Leien",
-        orders: "8",
-        address: "kjjjhkjhkj",
-      },
-    ],
+    burgers: "",
+    pizzas: "",
   });
+  const { burgers, pizzas } = order;
 
-  const { orderDetails } = order;
   console.log(order);
-
   React.useEffect(() => {
-    // This gets called after every render, by default
-    // (the first one, and every one after that)
-    console.log("rendering resources for showPizza!");
+    console.log("rendering resources for burgerOrders");
 
-    // If you want to implement componentWillUnmount,
-    // return a function from here, and React will call
-    // it prior to unmounting.
-    return () => console.log("unmounting for showPizza...");
-  }, [showPizza]);
+    const fetchburgers = async () => {
+      await axios
+        .get("http://localhost:3001/burgerOrders")
+        .then((resp) => {
+          console.log("the data from fetchburgers function call", resp.data);
+          setorder((prevState) => {
+            return { ...prevState, burgers: resp.data };
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
 
+    fetchburgers();
+
+    return () => console.log("unmounting2 for burgerOrders...");
+  }, []); //rerenders everytime setorder state changes
+
+  console.log(
+    "This runs after the fist useEffect, that fetches burgers",
+    order
+  );
   React.useEffect(() => {
-    // This gets called after every render, by default
-    // (the first one, and every one after that)
-    console.log("rendering resources for showBurger");
+    console.log("rendering resources for pizzaOrders");
+    const fetchPizzas = async () => {
+      await axios
+        .get("http://localhost:3001/pizzaOrders")
+        .then((resp) => {
+          console.log("the data from fetchPizzas function call", resp.data);
+          //in This set state I need the burger values as well
+          setorder((prevState) => {
+            console.log("pizza prevState", prevState);
+            return { ...prevState, pizzas: resp.data };
+          });
 
-    // If you want to implement componentWillUnmount,
-    // return a function from here, and React will call
-    // it prior to unmounting.
-    return () => console.log("unmounting2 for showBurger...");
-  }, [showBurger]);
+          //setorder({ ...order, ...burgers, pizzas: resp.data }); //This is array of data
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
 
+    fetchPizzas();
+
+    return () => console.log("unmounting3 for pizzaOrders...");
+  }, []); //rerenders everytime setorder state changes
+  console.log(
+    "This runs after the second useEffect, that fetches pizzas",
+    order
+  );
   return (
     <div className="container">
-      <div className="inner-flex-item">
-        <button onClick={() => setshowPizza(!showPizza)}>Show Pizzas</button>
+      {console.log("This is for render 1")}
 
-        {showPizza ? (
-          <div className="inner-container">{`Show Pizza Here ${showPizza}`}</div>
+      <div className="inner-flex-item">
+        {console.log("This is for render 2")}
+        <button onClick={() => setshowBurger(!showBurger)}>
+          Burger Orders
+        </button>
+        {showBurger ? (
+          <div className="inner-container">
+            <Form orderType="burger" />
+          </div>
         ) : (
           <div>
-            <Form
-              name={orderDetails[0].name}
-              orders={orderDetails[0].orders}
-              address={orderDetails[0].address}
-            />
+            {console.log("This is for render 3")}
+            {console.log("fetched burgers", burgers)}
+
+            <OrderList>
+              <ShowBurgerOrder burgers={burgers} />
+            </OrderList>
           </div>
         )}
-
-        {JSON.stringify(showPizza)}
       </div>
 
       <div className="inner-flex-item">
-        <button onClick={() => setshowBurger(!showBurger)}>Show Burgers</button>
-        {showBurger ? (
+        {console.log("This is for render 4")}
+        <button onClick={() => setshowPizza(!showPizza)}>Pizzas Orders</button>
+        {showPizza ? (
           <div className="inner-container">
-            {`Show Burger Here ${showBurger}`}
+            <Form
+              orderType="pizza"
+              showPizza={showPizza}
+              showBurger={showBurger}
+            />
           </div>
         ) : (
           <div>
-            <Form
-              name={orderDetails[1].name}
-              orders={orderDetails[1].orders}
-              address={orderDetails[1].address}
-            />
+            {console.log("This is for render 5")}
+            {console.log("fetched pizzas", pizzas)}
+
+            <OrderList>
+              <ShowPizzaOrder pizzas={pizzas} />{" "}
+            </OrderList>
           </div>
         )}
       </div>
@@ -101,3 +138,18 @@ export default App;
 // Focus On Mount
 // Fetch Data With useEffect
 // Re-fetch When Data Changes
+//////////////////VV IMP/////////////////////////////////////////
+//https://www.robinwieruch.de/react-hooks-fetch-data
+//https://reactjs.org/docs/hooks-faq.html#can-i-skip-an-effect-on-updates
+//https://reactjs.org/docs/hooks-reference.html#functional-updates
+//npx json-server --watch db.json --port 3001
+///////////////////////////Concepts Discussed ////////////////////////////////
+
+//how useEffect run
+//Understanding how to adjust sideeffects in useEffects on user action like click button
+//running useEffect once
+//running useEffect based on dependency
+//Data fetching in Useffect
+//Running two useEffcets and analyziing how data flows
+//Rendering components conditionally
+//Analyziing how data flows through useEffects when compinents are passed

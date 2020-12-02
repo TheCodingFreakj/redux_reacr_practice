@@ -1,0 +1,60 @@
+{
+  "burgerOrders": [
+    {
+      "customer": "Damon Salvatore",
+      "address": "New Jersey",
+      "orders": "8",
+      "id": 1
+    },
+    {
+      "customer": "Paul Rol",
+      "address": "New Jersey",
+      "orders": "4",
+      "id": 2
+    },
+    {
+      "customer": "weasely mark",
+      "address": "eeeee",
+      "orders": "5",
+      "id": 3
+    },
+    {
+      "customer": "Paes Lee",
+      "address": "ppppp",
+      "orders": "90",
+      "id": 4
+    },
+    {
+      "customer": "Ryan Holman",
+      "address": "2dfd",
+      "orders": "65",
+      "id": 5
+    }
+  ],
+  "pizzaOrders": [
+    {
+      "customer": "Paul Wesley",
+      "address": "California",
+      "orders": "5",
+      "id": 1
+    },
+    {
+      "customer": "Sam Jweemry",
+      "address": "California",
+      "orders": "12",
+      "id": 2
+    },
+    {
+      "customer": "Paes Lee",
+      "address": "fggdhgh",
+      "orders": "89",
+      "id": 3
+    },
+    {
+      "customer": "Ryan Holman",
+      "address": "wewe",
+      "orders": "566",
+      "id": 4
+    }
+  ]
+}
