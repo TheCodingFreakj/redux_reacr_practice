@@ -1,0 +1,64 @@
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Poppins', sans-serif; */
+
+body {
+  background-color: aliceblue;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#hero-section {
+  background: teal;
+  position: relative;
+}
+
+#hero-section ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2% 3%;
+}
+
+#hero-section ul li {
+  color: sienna;
+  list-style: none;
+}
+
+li.active {
+  background: sienna;
+  padding: 1% 1%;
+}
+
+li :hover {
+  background: red;
+  padding: 2% 2%;
+}
+
+#hero-section ul li > ul.sub-menu {
+  background-color: rgb(87, 79, 83);
+  margin-right: 0;
+  display: block;
+  height: 100px;
+  list-style-type: none;
+  margin: 10px;
+  position: absolute;
+  z-index: 99;
+  white-space: nowrap;
+  display: none;
+}
+#hero-section ul li > ul.sub-menu.position-service {
+  left: 23.7%;
+}
+
+#hero-section ul li > ul.sub-menu.position-blog {
+  left: 36%;
+}
+
+#hero-section ul > li a {
+  text-decoration: none;
+  color: yellow;
+  font-size: 1.1em;
+  font-stretch: expanded;
+  font-weight: 700;
+}
+
+/* https://css-tricks.com/targetting-menu-elements-submenus-navigation-bar/ */

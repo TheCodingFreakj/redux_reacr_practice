@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Responsive Nav Bar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+      
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;800&family=Poppins&display=swap" rel="stylesheet">
+       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+     
+       <link rel="stylesheet" href="css/style.css">
+       <!-- <link rel="stylesheet" href="js/script.css"> -->
+    </head>
+    <body>
+   <!-- Hero section -->
+        <section role="full-horizontal" id="hero-section">
+            <ul> 
+                <li class="active"><a href="#">Home</a>
+                    
+                
+                </li> 
+
+                <!-- target the 2nd and 3rd </li>
+                go to the ul then li style -->
+                <li onmouseover="myFunction()"  ><a href="#">Services</a>
+                
+                    <ul id="show-menu" class="sub-menu position-service">
+                        <li><a href="#">item</a></li>
+                        <li><a href="#">item</a></li>
+                        <li><a href="#">item</a></li>
+                        <li><a href="#">item</a></li>
+                      </ul>
+                    
+                    </li> 
+                <li  onmouseover="myBlogFunction()" ><a href="#">Blog</a>
+                    <ul id="show-menu-blog" class="sub-menu position-blog">
+                        <li ><a href="#">item</a></li>
+                        <li><a href="#">item</a></li>
+                        <li><a href="#">item</a></li>
+                        <li><a href="#">item</a></li>
+                      </ul>
+                    
+                    </li> 
+                <li><a href="#">Contact</a></li> 
+                <li><a href="#">Testimonial</a></li> 
+                <li><a href="#">Press Releases</a></li> 
+            </ul> 
+
+            
+        </section>
+
+
+
+
+     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+     
+     <script type="text/javascript">
+        function myFunction() {
+  let x = document.getElementById("show-menu");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function myBlogFunction() {
+  let x = document.getElementById("show-menu-blog");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+  
+      </script>;
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    </body>
+</html>
