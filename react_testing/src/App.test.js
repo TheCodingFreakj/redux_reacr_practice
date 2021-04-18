@@ -5,9 +5,9 @@ import { mount, configure, shallow } from "enzyme";
 
 describe("counter testing", () => {
   let wrapper;
+
   beforeEach(() => {
     wrapper = shallow(<Counter />);
-    console.log(wrapper.debug());
   });
   test("render the counter header", () => {
     // dont render inside the wrapper
@@ -25,12 +25,12 @@ describe("counter testing", () => {
   });
 
   test("render the initial state value of button rendered on scree", () => {
-    expect(wrapper.find("#counter-value").text()).toBe("0"); //pput the initial value to be rendered in inir\tial state
+    expect(wrapper.find("#counter-value").text()).toBe("0");
   });
 
   test("render the click event of increment button and increment counter", () => {
     //this mechanism is related to setState over onclikc event
-    wrapper.find("#increment-btn").simulate("click"); //clicking the button on th \e id
+    wrapper.find("#increment-btn").simulate("click");
     //confirm what renders after that
     expect(wrapper.find("#counter-value").text()).toBe("1");
   });

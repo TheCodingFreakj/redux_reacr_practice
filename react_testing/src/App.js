@@ -15,6 +15,9 @@ const App = () => {
         <h1 className="has-text-centered title is-1">
           Welcome in the personal finance app!
         </h1>
+        {/* 
+        test that AccountBalance component is rendering without crash
+        test that AccountBalance component is rendering with props */}
         <AccountBalance accounts={accounts} />
       </header>
     </div>
@@ -24,4 +27,3 @@ const App = () => {
 export default App;
 
 //test this https://github.com/Duomly/reactjs-hooks-tutorial
-
