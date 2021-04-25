@@ -1,0 +1,10 @@
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 15rem;
+  background: yellowgreen;
+  position: relative;
+  left: 40%;
+  padding: 2%;
+}
