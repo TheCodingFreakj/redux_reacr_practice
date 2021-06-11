@@ -1,0 +1,17 @@
+{
+  "name": "programming_exerises_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "author": "Pallavi Priyadarshini",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6"
+  },
+  "devDependencies": {},
+  "description": "This is for beginner to intermediate people"
+}
