@@ -1,0 +1,30 @@
+.navbar {
+  background: tomato;
+}
+
+nav.main_nav {
+  display: none;
+}
+
+button.main-nav-menu-button {
+  display: block;
+  background: top;
+  padding: 3%;
+  position: relative;
+  left: 3%;
+}
+
+svg.svg-inline--fa.fa-align-justify.fa-w-14 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  nav.main_nav {
+    display: block;
+    background: rgb(54, 47, 33);
+    padding: 1%;
+  }
+  button.main-nav-menu-button {
+    display: none;
+  }
+}

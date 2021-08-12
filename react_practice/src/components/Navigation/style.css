@@ -1,0 +1,45 @@
+ul.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  right: 10%;
+}
+
+/* ul.nav-links li {
+  padding: 3%;
+} */
+
+ul.nav-links li a {
+  background-color: aqua;
+  margin: 0 3rem;
+  padding: 1rem;
+}
+
+.sidedrawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  height: 100vh;
+  background-color: yellowgreen;
+  box-shadow: 0 2px 8px rebeccapurple;
+}
+
+nav.monile_nav {
+  width: 300px;
+}
+ul.mobile-links {
+  list-style: none;
+}
+
+ul.mobile-links li {
+  margin: 2rem;
+}
+
+ul.mobile-links li a {
+  background-color: aqua;
+  margin: 3rem;
+  padding: 4%;
+  /* padding: 1rem; */
+}
