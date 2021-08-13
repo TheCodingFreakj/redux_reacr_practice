@@ -45,7 +45,7 @@ import {
       case REGISTER_FAIL:
       case LOGIN_FAIL:
       case LOGOUT:
-      case DELETE_ACCOUNT:
+      // case DELETE_ACCOUNT:
         localStorage.removeItem("token");
   
         return {

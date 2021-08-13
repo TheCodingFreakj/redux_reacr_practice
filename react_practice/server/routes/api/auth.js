@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const auth = require("../../middlewares/auth");
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../../models/user");
@@ -39,7 +38,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+    console.log(req.body);
     const { email, password } = req.body;
 
     try {
@@ -69,9 +68,13 @@ router.post(
 
       jwt.sign(payload, "jwtSecret", { expiresIn: "5 days" }, (err, token) => {
         if (err) throw err;
-        return res.status(200).json({ token: token, user: user });
+
+        return res
+          .status(200)
+          .json({ message: "login don", token: token, user: user });
       });
     } catch (err) {
+      console.log("this is hit");
       return res
         .status(500)
         .send("the request done is falsy..try again with right credentials");

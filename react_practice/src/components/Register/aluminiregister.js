@@ -45,16 +45,16 @@ const vpassword = (value) => {
     );
   }
 };
-const StudentRegister = () => {
+const AluminRegister = () => {
   const form = React.useRef();
   const checkBtn = React.useRef();
-
+  //   const { user } = useSelector((state) => state.auth);
   const alertmessage = useSelector((state) => state.alert);
   console.log(alertmessage);
   const [name, setname] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [role, setrole] = React.useState("student");
+  const [role, setrole] = React.useState("alumini");
   const [successful, setSuccessful] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -146,4 +146,4 @@ const StudentRegister = () => {
   );
 };
 
-export default StudentRegister;
+export default AluminRegister;

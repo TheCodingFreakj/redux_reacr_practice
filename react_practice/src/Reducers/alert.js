@@ -1,3 +1,5 @@
+import { SET_ALERT, REMOVE_ALERT } from "../Actions/type";
+
 const initialState = [];
 
 //action has a type to evaluate and data based on the state structure

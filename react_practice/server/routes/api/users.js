@@ -34,8 +34,7 @@ router.post(
     //         "location": "body"
     //     }
     // ]
-
-    const { name, email, password } = req.body; //save all from the req.body
+    const { name, email, password, role } = req.body; //save all from the req.body
     try {
       //see if the user exists
       let user = await User.findOne({ email });
@@ -52,6 +51,7 @@ router.post(
         name,
         email,
         password,
+        role,
       });
       //encrypt password
 
@@ -68,9 +68,9 @@ router.post(
       jwt.sign(payload, "jwtSecret", { expiresIn: 360000 }, (err, token) => {
         if (err) throw err;
         return res.status(200).json({ token: token, user: user });
-     
       });
     } catch (err) {
+      console.log(err);
       return res
         .status(500)
         .send("the request done is falsy..try again with right credentials");

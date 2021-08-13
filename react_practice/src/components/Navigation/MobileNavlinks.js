@@ -7,10 +7,18 @@ const MobileNavlinks = () => {
   return (
     <ul className="mobile-links">
       <li>
-        <NavLink to="/register">register</NavLink>
+        <NavLink to="/student-register">student-register</NavLink>
       </li>
       <li>
-        <NavLink to="/login"> Login</NavLink>
+        <NavLink to="/alumini-register"> alumini-register</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/student-login"> student-login</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/alumini-login"> alumini-login</NavLink>
       </li>
     </ul>
   );

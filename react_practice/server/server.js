@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const path = require('path');
+const cors = require("cors");
 
 const app = express();
 const connectDB = async () => {
@@ -23,16 +23,24 @@ const connectDB = async () => {
   }
 };
 connectDB();
-// Connect Database
-// connectDB();
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, PUT,POST,DELETE");
+  next();
+});
+
+app.use(cors());
 
 // Init Middleware
 app.use(express.json());
 
 // Define Routes
- app.use("/api/users", require("./routes/api/users"));
- app.use("/api/auth", require("./routes/api/auth"));
-
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/auth", require("./routes/api/auth"));
 
 app.get("/", (req, res) => res.send("Api Running"));
 

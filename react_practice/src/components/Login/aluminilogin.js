@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { registerUser } from "../../Actions/auth";
+import { loginUser } from "../../Actions/auth";
 import { isEmail } from "validator";
-
+import { Redirect, Link } from "react-router-dom";
 const required = (value) => {
   if (!value) {
     return (
@@ -16,53 +16,16 @@ const required = (value) => {
   }
 };
 
-const validEmail = (value) => {
-  if (!isEmail(value)) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This is not a valid email.
-      </div>
-    );
-  }
-};
-
-const vname = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
-const StudentRegister = () => {
+const AluminLogin = () => {
   const form = React.useRef();
   const checkBtn = React.useRef();
-
-  const alertmessage = useSelector((state) => state.alert);
-  console.log(alertmessage);
-  const [name, setname] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [role, setrole] = React.useState("student");
   const [successful, setSuccessful] = React.useState(false);
   const dispatch = useDispatch();
-
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setname(username);
-  };
-
+  const alertmessage = useSelector((state) => state.alert);
+ 
   const onChangeEmail = (e) => {
     const email = e.target.value;
     setEmail(email);
@@ -77,35 +40,28 @@ const StudentRegister = () => {
     setSuccessful(false);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      dispatch(registerUser({ name, email, password, role }))
-        .then(() => {
+      dispatch(loginUser({ email, password }))
+        .then((data) => {
+          console.log(data);
           setSuccessful(true);
+          return <Redirect to="/alumini-profile" />;
+          // window.location.reload();
         })
         .catch(() => {
+          setLoading(false);
           setSuccessful(false);
         });
+    } else {
+      setLoading(false);
     }
   };
 
   return (
     <React.Fragment>
       <div className="main_content">
-        {alertmessage ? <h2>{alertmessage}</h2> : null}
         <Form onSubmit={handleRegister} ref={form}>
-          {!successful && (
+          {!successful ? (
             <div>
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  value={name}
-                  onChange={onChangeUsername}
-                  validations={[required, vname]}
-                />
-              </div>
-
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <Input
@@ -114,7 +70,6 @@ const StudentRegister = () => {
                   name="email"
                   value={email}
                   onChange={onChangeEmail}
-                  validations={[required, validEmail]}
                 />
               </div>
 
@@ -126,7 +81,6 @@ const StudentRegister = () => {
                   name="password"
                   value={password}
                   onChange={onChangePassword}
-                  validations={[required, vpassword]}
                 />
               </div>
 
@@ -134,6 +88,14 @@ const StudentRegister = () => {
                 <button className="btn btn-primary btn-block">Sign Up</button>
               </div>
             </div>
+          ) : (
+            <>
+              <h2>{alertmessage}</h2>
+
+              <p className="my-1">
+                Got to? <Link to="/alumini-profile">Login From Here</Link>
+              </p>
+            </>
           )}
 
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
@@ -146,4 +108,4 @@ const StudentRegister = () => {
   );
 };
 
-export default StudentRegister;
+export default AluminLogin;
