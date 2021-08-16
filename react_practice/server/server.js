@@ -41,6 +41,7 @@ app.use(express.json());
 // Define Routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/freebooking", require("./routes/api/booking"));
 
 app.get("/", (req, res) => res.send("Api Running"));
 

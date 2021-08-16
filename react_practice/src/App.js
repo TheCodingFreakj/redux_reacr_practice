@@ -12,6 +12,7 @@ import SideDrawer from "./components/Navigation/sidedrawer";
 import MobileNavlinks from "./components/Navigation/MobileNavlinks";
 import StudentProfile from "./components/Profiles/student";
 import AluminiProfile from "./components/Profiles/alumini";
+import TimeSlot from "./components/Slots/freeslots";
 import "./App.css";
 const App = () => {
   const [draweropen, setdraweropen] = React.useState(false);
@@ -65,6 +66,10 @@ const App = () => {
 
               <Route path="/student-profile" exact>
                 <AluminiProfile />
+              </Route>
+
+              <Route path="/book" exact>
+                <TimeSlot />
               </Route>
             </>
           </Switch>

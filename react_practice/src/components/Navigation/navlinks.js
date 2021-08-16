@@ -20,6 +20,10 @@ const Navlinks = () => {
       <li>
         <NavLink to="/alumini-login"> alumini-login</NavLink>
       </li>
+
+      <li>
+        <NavLink to="/book"> bookTimeslot</NavLink>
+      </li>
     </ul>
   );
 };

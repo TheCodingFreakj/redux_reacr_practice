@@ -1,0 +1,7 @@
+.slot_system {
+  background: tomato;
+  padding: 4%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
