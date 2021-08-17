@@ -54,6 +54,12 @@ const TimeSlot = () => {
           </>
         ) : null}
 
+        {slotsbookedfree.error ? (
+          <>
+            <Message variant="failed">{slotsbookedfree.error}</Message>
+          </>
+        ) : null}
+
         <h2>Free Booking </h2>
 
         {timeslots.map((item, index) => {

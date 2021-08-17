@@ -61,11 +61,11 @@ const App = () => {
               </Route>
 
               <Route path="/alumini-profile" exact>
-                <StudentProfile />
+                <AluminiProfile />
               </Route>
 
               <Route path="/student-profile" exact>
-                <AluminiProfile />
+                <StudentProfile />
               </Route>
 
               <Route path="/book" exact>

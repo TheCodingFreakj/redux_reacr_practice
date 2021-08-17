@@ -1,19 +1,21 @@
 import {
   FREEBOOKINGSUCCESS,
   FREEBOOKINGFAIL,
-  PAIDBOOKINGFAIL,
-  PAIDBOOKINGSUCCESS,
-  SET_ALERT,
+  GETBOOKINGSUCCESS,
+  GETBOOKINGFAIL,
+  APPROVEFAIL,
+  APPROVESUCCESS,
 } from "../Actions/type";
 
 const initialState = {
   message: "",
-  user: null, //payload or res data for /api/auth give back the authenticated user
+  error: "",
+  user: [], //payload or res data for /api/auth give back the authenticated user
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
-
+  console.log(payload);
   switch (type) {
     case FREEBOOKINGSUCCESS:
       return {
@@ -22,10 +24,33 @@ export default function (state = initialState, action) {
       };
 
     case FREEBOOKINGFAIL:
-    
       return {
         ...state,
-        message: payload,
+        error: payload,
+      };
+
+    case GETBOOKINGSUCCESS:
+      return {
+        ...state,
+        user: payload,
+      };
+
+    case GETBOOKINGFAIL:
+      return {
+        ...state,
+        error: payload,
+      };
+
+    case APPROVESUCCESS:
+      return {
+        ...state,
+        user: payload,
+      };
+
+    case APPROVEFAIL:
+      return {
+        ...state,
+        error: payload,
       };
 
     default:

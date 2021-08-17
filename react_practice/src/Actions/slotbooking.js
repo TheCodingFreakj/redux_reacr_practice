@@ -1,9 +1,10 @@
 import {
   FREEBOOKINGSUCCESS,
   FREEBOOKINGFAIL,
-  PAIDBOOKINGFAIL,
-  PAIDBOOKINGSUCCESS,
-  SET_ALERT,
+  GETBOOKINGSUCCESS,
+  GETBOOKINGFAIL,
+  APPROVEFAIL,
+  APPROVESUCCESS,
 } from "../Actions/type";
 import axios from "axios";
 export const bookFreeSlots =
@@ -31,6 +32,55 @@ export const bookFreeSlots =
       dispatch({
         type: FREEBOOKINGFAIL,
         payload: err.response.data.message,
+      });
+    }
+  };
+
+export const fetchFreeSlots = () => async (dispatch) => {
+  try {
+    const response = await axios({
+      method: "get",
+      url: "http://localhost:9000/api/freebooking",
+    });
+
+    dispatch({
+      type: GETBOOKINGSUCCESS,
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err.response.data);
+    dispatch({
+      type: GETBOOKINGFAIL,
+      payload: err.response.data.message,
+    });
+  }
+};
+
+export const approveFreeSlots =
+  ({ user }) =>
+  async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "put",
+        url: "http://localhost:9000/api/freebooking",
+        data: {
+          user,
+        },
+        headers: {
+          contentType: "application/json",
+        },
+      });
+      console.log(response);
+
+      dispatch({
+        type: APPROVESUCCESS,
+        payload: response.data,
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: APPROVEFAIL,
+        // payload: err.response.data,
       });
     }
   };

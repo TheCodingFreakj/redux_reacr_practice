@@ -10,6 +10,10 @@ const BookingSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  name: {
+    type: String,
+    required: true,
+  },
   status: {
     type: String,
     required: true,
