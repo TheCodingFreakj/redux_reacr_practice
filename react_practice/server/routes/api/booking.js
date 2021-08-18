@@ -46,9 +46,9 @@ router.get("/", async (req, res) => {
     return res.status(200).send(bookings);
   } catch (err) {
     console.log(err);
-    return res
-      .status(500)
-      .send({ message: "the request done is falsy..try again with right credentials"});
+    return res.status(500).send({
+      message: "the request done is falsy..try again with right credentials",
+    });
   }
 });
 
@@ -60,15 +60,34 @@ router.put("/", async (req, res) => {
   const time = user.time;
   try {
     let booking = await Booking.findOne({ time: time });
-  
+
     booking.status = "1";
     await booking.save();
     return res.status(200).send(booking);
   } catch (err) {
     console.log(err);
-    return res
-      .status(500)
-      .send({ message: "the request done is falsy..try again with right credentials"});
+    return res.status(500).send({
+      message: "the request done is falsy..try again with right credentials",
+    });
+  }
+});
+
+router.delete("/", async (req, res) => {
+  // console.log(req.body);
+
+  const { user } = req.body;
+
+  const time = user.time;
+  try {
+    await Booking.findOneAndRemove({ time: time });
+    return res.status(200).send({
+      message: "userdelete",
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({
+      message: "the request done is falsy..try again with right credentials",
+    });
   }
 });
 module.exports = router;

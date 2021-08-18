@@ -1,3 +1,4 @@
+import userEvent from "@testing-library/user-event";
 import {
   FREEBOOKINGSUCCESS,
   FREEBOOKINGFAIL,
@@ -5,6 +6,8 @@ import {
   GETBOOKINGFAIL,
   APPROVEFAIL,
   APPROVESUCCESS,
+  DELETEFAIL,
+  DELETESUCCESS,
 } from "../Actions/type";
 
 const initialState = {
@@ -15,7 +18,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
-  console.log(payload);
+
   switch (type) {
     case FREEBOOKINGSUCCESS:
       return {
@@ -42,12 +45,27 @@ export default function (state = initialState, action) {
       };
 
     case APPROVESUCCESS:
+      let index = state.user.findIndex((user) => user.user == payload.user);
+      let newArray = [...state.user];
+      newArray[index].status = "1";
+
       return {
         ...state,
-        user: payload,
+        user: newArray,
       };
 
     case APPROVEFAIL:
+      return {
+        ...state,
+        error: payload,
+      };
+
+    case DELETESUCCESS:
+      return {
+        ...state,
+        message: payload,
+      };
+    case DELETEFAIL:
       return {
         ...state,
         error: payload,
@@ -57,3 +75,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+//https://medium.com/swlh/few-ways-to-update-a-state-array-in-redux-reducer-f2621ae8061

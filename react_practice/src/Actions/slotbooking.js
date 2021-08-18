@@ -5,6 +5,8 @@ import {
   GETBOOKINGFAIL,
   APPROVEFAIL,
   APPROVESUCCESS,
+  DELETEFAIL,
+  DELETESUCCESS,
 } from "../Actions/type";
 import axios from "axios";
 export const bookFreeSlots =
@@ -48,7 +50,7 @@ export const fetchFreeSlots = () => async (dispatch) => {
       payload: response.data,
     });
   } catch (err) {
-    console.log(err.response.data);
+    // console.log(err.response.data);
     dispatch({
       type: GETBOOKINGFAIL,
       payload: err.response.data.message,
@@ -80,6 +82,35 @@ export const approveFreeSlots =
       console.log(err);
       dispatch({
         type: APPROVEFAIL,
+        // payload: err.response.data,
+      });
+    }
+  };
+
+export const deleteFreeSlots =
+  ({ user }) =>
+  async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "delete",
+        url: "http://localhost:9000/api/freebooking",
+        data: {
+          user,
+        },
+        headers: {
+          contentType: "application/json",
+        },
+      });
+      console.log(response);
+
+      dispatch({
+        type: DELETESUCCESS,
+        payload: response.data.message,
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: DELETEFAIL,
         // payload: err.response.data,
       });
     }
