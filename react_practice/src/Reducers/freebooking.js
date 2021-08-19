@@ -8,12 +8,16 @@ import {
   APPROVESUCCESS,
   DELETEFAIL,
   DELETESUCCESS,
+  GETURBOOKINGSUCCESS,
+  GETURBOOKINGFAIL,
 } from "../Actions/type";
 
 const initialState = {
   message: "",
   error: "",
   user: [], //payload or res data for /api/auth give back the authenticated user
+  allbookingbyuser:[],
+  status:false
 };
 
 export default function (state = initialState, action) {
@@ -66,6 +70,18 @@ export default function (state = initialState, action) {
         message: payload,
       };
     case DELETEFAIL:
+      return {
+        ...state,
+        error: payload,
+      };
+
+    case GETURBOOKINGSUCCESS:
+      return {
+        ...state,
+        allbookingbyuser: payload,
+        status:true
+      };
+    case GETURBOOKINGFAIL:
       return {
         ...state,
         error: payload,

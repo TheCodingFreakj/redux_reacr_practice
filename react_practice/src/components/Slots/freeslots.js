@@ -82,7 +82,7 @@ const TimeSlot = () => {
         })}
       </div>
 
-      {auth.isAuthenticated ? (
+      {auth.isAuthenticated  ? (
         <div className="buisy_slot_system">
           <h2>Requires Approval</h2>
           {timeslots.map((item, index) => {

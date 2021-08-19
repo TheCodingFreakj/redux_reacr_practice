@@ -52,6 +52,28 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:userid", async (req, res) => {
+  try {
+    console.log(req.params.userid);
+
+    let bookings = await Booking.find({ user: req.params.userid });
+    console.log(bookings)
+    if (!bookings) {
+      return res.status(400).send({
+        message: "There is no booking from this user",
+      });
+    }
+    // console.log(bookings);
+
+    return res.status(200).send(bookings);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({
+      message: "the request done is falsy..try again with right credentials",
+    });
+  }
+});
+
 router.put("/", async (req, res) => {
   // console.log(req.body);
 

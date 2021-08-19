@@ -7,6 +7,9 @@ import {
   APPROVESUCCESS,
   DELETEFAIL,
   DELETESUCCESS,
+  GETURBOOKINGSUCCESS,
+  GETURBOOKINGFAIL
+
 } from "../Actions/type";
 import axios from "axios";
 export const bookFreeSlots =
@@ -115,3 +118,26 @@ export const deleteFreeSlots =
       });
     }
   };
+
+export const fetchslotbookedbyyou = (userid) => async (dispatch) => {
+  console.log(userid);
+  console.log(`http://localhost:9000/api/freebooking/${userid}`);
+  try {
+    const response = await axios({
+      method: "get",
+      url: `http://localhost:9000/api/freebooking/${userid}`,
+    });
+  
+
+    dispatch({
+      type: GETURBOOKINGSUCCESS,
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+    dispatch({
+      type: GETURBOOKINGFAIL,
+      payload: err.response.data.message,
+    });
+  }
+};

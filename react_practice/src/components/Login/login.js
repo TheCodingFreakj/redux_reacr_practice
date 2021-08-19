@@ -47,7 +47,7 @@ const Login = () => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(loginUser({ email, password }))
         .then((data) => {
-          console.log(data);
+         
           setSuccessful(true);
           return <Redirect to="/student-profile" />;
         })
